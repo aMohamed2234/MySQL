@@ -1,7 +1,7 @@
 const db = require('../models/indexStart')
 const creatError = require('http-errors')
 
-const Student = db.student
+const Student = db.students
 
 module.exports = {
 
