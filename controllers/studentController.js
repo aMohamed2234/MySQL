@@ -24,7 +24,7 @@ module.exports = {
     // get all students
     getAllStudents :async (req, res, next)=>{
         try {
-            let students = await Student.findAll ({})
+            const students = await Student.findAll ({})
             res.status(200).send(students)
 
         } catch (error) {
@@ -35,11 +35,11 @@ module.exports = {
     // get student by id
     getStudent :async (req, res, next)=>{
         try {
-            let id = req.params.student_id
-            let student = await Student.findOne( {where: {student_id: id}})
+            const id = req.params.student_id
+            const student = await Student.findOne( {where: {student_id: id}})
 
             if(!student) {
-                 throw(createError(404, "student does not exist"))
+                 throw(creatError(404), "student does not exist")
             }
             res.status(200).send(student)
         } catch (error) {
@@ -50,14 +50,14 @@ module.exports = {
     // update student
     updateStudent :async (req, res, next)=>{
         try {
-            let id = req.params.id
+            const id = req.params.student_id
 
             const student = await Student.update(req.body, { where: {student_id: id}})
             
             if(!student) {
-                throw(createError(404, "student does not exist"))
+                throw(creatError(404), "student does not exist")
            }
-           res.status(200).send(student)
+           res.status(200).send("student updated succesfully")
        } catch (error) {
            next(error)
        }
@@ -67,14 +67,13 @@ module.exports = {
     // delete student
     deleteStudent :async (req, res, next)=>{
         try {
-            let id = req.params.id
-
-            await Student.destroy( { where: {student_id: id}})
+            const id = req.params.student_id
+            const student = await Student.destroy( { where: {student_id: id}})
             res.status(200).send( "student Deleted Succesfully")
         } catch (error) {
             next(error)
         }
      }
 
-     
+
     }
