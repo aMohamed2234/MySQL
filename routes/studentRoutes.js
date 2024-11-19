@@ -12,4 +12,4 @@ router.patch('/UpdateStudent/:student_id', studentController.updateStudent)
 
 router.delete('/deleteStudent/:student_id', studentController.deleteStudent)
 
-module.exports = routes
+module.exports = router
