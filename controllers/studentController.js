@@ -61,8 +61,20 @@ module.exports = {
        } catch (error) {
            next(error)
        }
-        }
-    },
+        },
+   
      
+    // delete student
+    deleteStudent :async (req, res, next)=>{
+        try {
+            let id = req.params.id
 
-}
+            await Student.destroy( { where: {student_id: id}})
+            res.status(200).send( "student Deleted Succesfully")
+        } catch (error) {
+            next(error)
+        }
+     }
+
+     
+    }
